@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+fun GreetingText(message: String, from: String, email: String, modifier: Modifier = Modifier) {
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -75,27 +75,27 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
         (
                 Text(
                     text = email,
-                    fontSize = 25.sp,
+                    fontSize = 15.sp,
                     modifier = Modifier
                         .padding(16.dp)
-                        .align(alignment = Alignment.Bottom)
-                )             
-                
+                        .align(alignment = Alignment.End)
+                )
+
                 )
         }
     }
 
 @Composable
-fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
+fun GreetingImage(message: String, from: String, email: String, modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.pngtree_black_business_atmosphere_business_card_background_image_239793)
     Box (modifier) {
         Image(
             painter = image,
             contentDescription = null,
             modifier = Modifier
-                .fillMaxWidth()
-            //contentScale = ContentScale.FillWidth,
-            //alpha = 1.0F
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop,
+            alpha = 1.0F
         )
         GreetingText(
             message = message,
@@ -114,10 +114,11 @@ fun BirthdayCardPreview() {
     HappyBirthdayTheme {
         GreetingImage(
             message = "Christopher Emmons",
-            from = "Director of Audio"
+            from = "Director of Audio",
             email = "Heard@HeardSound.com"
         )
     }
 }
+
 
 
